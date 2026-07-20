@@ -1,0 +1,59 @@
+{% extends 'productos/base.html' %}
+
+{% block contenido %}
+
+<div class="card">
+
+    <div class="card-header bg-danger text-white">
+
+        <h4>Eliminar Producto</h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <p>
+
+            ¿Está seguro de eliminar el siguiente producto?
+
+        </p>
+
+        <ul>
+
+            <li><strong>Código:</strong> {{ producto.codigo }}</li>
+
+            <li><strong>Nombre:</strong> {{ producto.nombre }}</li>
+
+            <li><strong>Precio:</strong> ${{ producto.precio }}</li>
+
+            <li><strong>Stock:</strong> {{ producto.stock }}</li>
+
+        </ul>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="btn btn-danger">
+
+                Sí, eliminar
+
+            </button>
+
+            <a
+                href="{% url 'lista_productos' %}"
+                class="btn btn-secondary">
+
+                Cancelar
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

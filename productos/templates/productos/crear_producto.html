@@ -1,0 +1,134 @@
+{% extends 'productos/base.html' %}
+
+{% block contenido %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header bg-primary text-white">
+
+                <h4 class="mb-0">
+
+                    {% if formulario.instance.pk %}
+                        Editar Producto
+                    {% else %}
+                        Registrar Producto
+                    {% endif %}
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Código
+                            </label>
+
+                            {{ formulario.codigo }}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Nombre
+                            </label>
+
+                            {{ formulario.nombre }}
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-semibold">
+                            Descripción
+                        </label>
+
+                        {{ formulario.descripcion }}
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Precio
+                            </label>
+
+                            {{ formulario.precio }}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Stock
+                            </label>
+
+                            {{ formulario.stock }}
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <div class="form-check">
+
+                            {{ formulario.activo }}
+
+                            <label class="form-check-label">
+
+                                Producto activo
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+
+                        <a href="{% url 'lista_productos' %}"
+                           class="btn btn-secondary">
+
+                            Cancelar
+
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Guardar
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
