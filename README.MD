@@ -177,6 +177,59 @@ http://127.0.0.1:8000/
 ```
 
 ---
+## Acceso desde dispositivos móviles (desarrollo)
+
+Para acceder a la aplicación desde un celular o una tablet conectados a la misma red Wi-Fi que el computador, sigue estos pasos:
+
+### 1. Configurar `ALLOWED_HOSTS`
+
+En el archivo `settings.py`:
+
+```python
+ALLOWED_HOSTS = ['*']
+```
+
+> **Nota:** Esta configuración es únicamente para desarrollo. En producción se deben especificar los dominios o direcciones IP permitidos.
+
+### 2. Iniciar el servidor
+
+Ejecuta el siguiente comando desde la carpeta donde se encuentra `manage.py`:
+
+```bash
+python manage.py runserver 0.0.0.0:8000
+```
+
+### 3. Obtener la dirección IP del computador
+
+En Windows ejecuta:
+
+```cmd
+ipconfig
+```
+
+Busca la línea **Dirección IPv4**.
+
+Ejemplo:
+
+```text
+Dirección IPv4 . . . . . . . . . : 192.168.1.6
+```
+
+### 4. Acceder desde el celular
+
+Abre el navegador del dispositivo móvil y escribe:
+
+```
+http://192.168.1.6:8000
+```
+
+Reemplaza `192.168.1.6` por la dirección IPv4 de tu computador.
+
+### Requisitos
+
+- El computador y el celular deben estar conectados a la misma red Wi-Fi.
+- El Firewall de Windows debe permitir conexiones al puerto **8000**.
+- El servidor de Django debe estar en ejecución.
 
 # Capturas del sistema
 
@@ -192,7 +245,7 @@ Aquí se pueden agregar imágenes de:
 
 # Autor
 
-**Tu nombre**
+Nicolas Villalba
 
 Tecnólogo en Análisis y Desarrollo de Software
 
